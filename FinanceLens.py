@@ -68,3 +68,31 @@ if st.session_state.app_started:
             st.line_chart(hist['Close'])
 
 
+    #The code below creates the section Budget Tracking which is designed to track your budget on a base level
+    elif section == ("Budget Tracking 💰"):
+
+
+        #This block of code sets the header and description for the page
+
+        st.header("Budget Tracking:")
+        st.write("Track your overall budget by your income, expenses, and savings!")
+
+
+        #This block of code asks the user for their income and expenses and uses the variables to provide further information to the user
+
+        income = st.number_input("On average, how much would you say your monthly income is? ")
+        expenses = st.number_input("On average, how much would you say your monthly expenses are? ")
+        balance = (income-expenses)
+
+
+        #This block of code gives the user information on how to manage their money on a base level
+
+        st.write("After your expenses are deducted from your income, the amount of money you have left is(without taxes into consideration, as it varies by state and income bracket): $", str(balance))
+        st.write("Diversifying your savings is very important!")
+        fourty = balance*0.4
+        sixty = balance*0.6
+        profit = ((((((fourty)*1.1)*1.1)*1.1)*1.1)*1.1)-fourty
+        st.write("If possible invest 40 percent of your balance, which is $" + str(fourty) + " into investments like the S&P 500 which will give you a return of about 10 percent annually.")
+        st.write("This investment after just 5 years will give you a profit of: $" + str(profit))
+        st.write("With the remaining 60 percent of your balance, which is $" + str(sixty) + ", put the money in your bank account.")
+        st.write("This allows you to build up your savings portfolio as well as gradually increase your return through both your bank as well as the S&P 500.")
