@@ -18,3 +18,24 @@ if not st.session_state.app_started:
     if start:
         st.session_state.app_started = True
         st.rerun()  
+
+
+# Once the user clicks the button the main app shows
+
+if st.session_state.app_started:
+
+    st.set_page_config(page_title="FinanceLens", page_icon="💵", layout="wide")
+
+
+    #This sets the title of the page
+
+    st.title("💵 FinanceLens - An Outlook on Your Finances")
+
+
+    #This creates a sidebar with categories
+
+    st.sidebar.header("Tools:")
+    section = st.sidebar.radio("Options:", ["Stock Insights 📈", "Budget Tracking 💰", "Financial Tips 💡"])
+
+
+    #The code below creates the section Stock Insights which is designed to give simple insights on select stocks and risk analysis
