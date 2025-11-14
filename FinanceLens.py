@@ -39,3 +39,32 @@ if st.session_state.app_started:
 
 
     #The code below creates the section Stock Insights which is designed to give simple insights on select stocks and risk analysis
+
+    if section == "Stock Insights 📈":
+
+
+        #Adds a header to the category
+
+        st.header("Stock Insights:")
+        st.write("Get simple insights on the performance and risk analysis of stocks over the past 10 days!")
+
+
+        #Asks the user for a stock symbol to retrieve and give data on the stock.
+
+        Stock = st.text_input("Please enter a stock symbol: ").upper()
+        if Stock:
+            data = yf.Ticker(Stock)
+            hist = data.history(period = "10d")
+            st.subheader("Closing Prices of the last 10 days:")
+            st.dataframe(hist[['Close']])
+
+
+            #The code from lines 64 to 68 was coded with the help of the AI tool ChatGPT
+
+            latest = hist['Close'][-1]
+            previous = hist['Close'][0]
+            change_percent = (latest-previous)/previous*100
+            st.write(f"The stock changed **{change_percent:.2f}%** in the last 10 days.")
+            st.line_chart(hist['Close'])
+
+
